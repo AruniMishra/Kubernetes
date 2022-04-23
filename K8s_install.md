@@ -35,15 +35,23 @@
 
 `kubectl get deployment`
 
+`kubectl get service`
+
 `kubectl get pods`
 
 `kubectl get replicaset`
 
 `kubectl edit deployment nginx-depl`
 
+`kubectl apply -f nginx-deployment.yaml`
+
+`kubectl get pod -o wide`
+
 ### debugging
 
 `kubectl logs {pod-name}`
+
+`kubectl describe pod {pod-name}`
 
 `kubectl exec -it {pod-name} -- bin/bash`
 
