@@ -53,6 +53,10 @@
 
 `kubectl describe pod {pod-name}`
 
+`kubectl get pod - o wide pod`
+
+`kubectl describe service {service-name}`
+
 `kubectl exec -it {pod-name} -- bin/bash`
 
 ### create mongo deployment
