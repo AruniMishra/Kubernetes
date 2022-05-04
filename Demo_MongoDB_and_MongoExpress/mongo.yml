@@ -15,7 +15,7 @@ spec:
         app: mongodb
     spec:
       containers:
-      - name: mongodb-container
+      - name: mongodb
         image: mongo
         ports:
         - containerPort: 27017

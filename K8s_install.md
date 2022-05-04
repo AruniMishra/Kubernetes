@@ -59,6 +59,8 @@
 
 `kubectl exec -it {pod-name} -- bin/bash`
 
+`kubectl get all | grep mongodb`
+
 ### create mongo deployment
 
 `kubectl create deployment mongo-depl --image=mongo`
