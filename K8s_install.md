@@ -5,9 +5,9 @@
   - [commmand](#commmand)
     - [create minikube cluster](#create-minikube-cluster)
     - [kubectl](#kubectl)
+    - [namespace](#namespace)
     - [debugging](#debugging)
     - [create mongo deployment](#create-mongo-deployment)
-    - [arch](#arch)
 
 ## Installation
 
@@ -50,6 +50,10 @@
 
 `kubectl delete --all services`
 
+### namespace
+
+`kubectl create namespace my-namespace`
+
 ### debugging
 
 `kubectl logs {pod-name}`
@@ -67,5 +71,3 @@
 ### create mongo deployment
 
 `kubectl create deployment mongo-depl --image=mongo`
-
-### arch
