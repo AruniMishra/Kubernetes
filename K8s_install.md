@@ -7,6 +7,7 @@
     - [kubectl](#kubectl)
     - [debugging](#debugging)
     - [create mongo deployment](#create-mongo-deployment)
+    - [arch](#arch)
 
 ## Installation
 
@@ -47,6 +48,8 @@
 
 `kubectl get pod -o wide`
 
+`kubectl delete --all services`
+
 ### debugging
 
 `kubectl logs {pod-name}`
@@ -64,3 +67,5 @@
 ### create mongo deployment
 
 `kubectl create deployment mongo-depl --image=mongo`
+
+### arch
