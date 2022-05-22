@@ -8,6 +8,8 @@
     - [namespace](#namespace)
     - [debugging](#debugging)
     - [create mongo deployment](#create-mongo-deployment)
+    - [ingress](#ingress)
+    - [Kubernetes dashboard](#kubernetes-dashboard)
 
 ## Installation
 
@@ -40,6 +42,8 @@
 
 `kubectl get pods`
 
+`kubectl get pods --all-namespaces`
+
 `kubectl get replicaset`
 
 `kubectl edit deployment nginx-depl`
@@ -71,3 +75,24 @@
 ### create mongo deployment
 
 `kubectl create deployment mongo-depl --image=mongo`
+
+### ingress
+
+`minikube addons enable ingress`
+
+`kubectl get pod -n kube-system`
+
+### Kubernetes dashboard
+
+- The Dashboard UI is not deployed by default. To deploy it, run the following command:
+
+`kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.5.0/aio/deploy/recommended.yaml`
+
+Kubectl will make Dashboard available at [http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/]
+
+- steps for generating the token
+  - Create the dashboard service account
+
+    ```console
+    kubectl create serviceaccount dashboard-admin-sa
+    ```
