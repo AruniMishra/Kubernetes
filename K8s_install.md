@@ -94,7 +94,7 @@ Kubectl will make Dashboard available at [http://localhost:8001/api/v1/namespace
 - steps for generating the token
   - Create the dashboard service account
 
-    ```console
+    ```shell
     kubectl create serviceaccount dashboard-admin-sa
     ```
   
