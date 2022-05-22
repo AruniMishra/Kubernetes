@@ -88,7 +88,7 @@
 
 `kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.5.0/aio/deploy/recommended.yaml`
 
-Kubectl will make Dashboard available at [http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/]
+Kubectl will make Dashboard available at [http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/]  
 `Kubectl proxy`
 
 - steps for generating the token
@@ -98,7 +98,7 @@ Kubectl will make Dashboard available at [http://localhost:8001/api/v1/namespace
     kubectl create serviceaccount dashboard-admin-sa
     ```
   
-  This will create a service account named dashboard-admin-sa in the default namespace
+    This will create a service account named dashboard-admin-sa in the default namespace
 
   - Next bind the dashboard-admin-service-account service account to the cluster-admin role
 
@@ -114,6 +114,6 @@ Kubectl will make Dashboard available at [http://localhost:8001/api/v1/namespace
 
   - Use kubectl describe to get the access token:
 
-    ```properties
+    ```console
     kubectl describe secret dashboard-admin-sa-token-kw7vn
     ```
