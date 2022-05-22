@@ -94,7 +94,7 @@ Kubectl will make Dashboard available at [http://localhost:8001/api/v1/namespace
 - steps for generating the token
   - Create the dashboard service account
 
-    ```shell
+    ```console
     kubectl create serviceaccount dashboard-admin-sa
     ```
   
@@ -102,18 +102,18 @@ Kubectl will make Dashboard available at [http://localhost:8001/api/v1/namespace
 
   - Next bind the dashboard-admin-service-account service account to the cluster-admin role
 
-    ```shell
+    ```console
     kubectl create clusterrolebinding dashboard-admin-sa --clusterrole=cluster-admin --serviceaccount=default:dashboard-admin-sa
     ```
 
   - When we created the dashboard-admin-sa service account Kubernetes also created a secret for it. List secrets using:
 
-    ```bash
+    ```console
     kubectl get secrets
     ```
 
   - Use kubectl describe to get the access token:
 
-    ``` properties
+    ```properties
     kubectl describe secret dashboard-admin-sa-token-kw7vn
     ```
