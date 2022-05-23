@@ -88,8 +88,20 @@
 
 `kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.5.0/aio/deploy/recommended.yaml`
 
+
 Kubectl will make Dashboard available at [http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/]  
 `Kubectl proxy`
+
+- kubectl port-forward  
+  Instead of kubectl proxy, you can use kubectl port-forward and access dashboard with simpler URL than using kubectl proxy
+  
+  To access Kubernetes Dashboard go to:
+
+  ```shell
+  https://localhost:8080
+  ```
+
+- Reference [https://github.com/kubernetes/dashboard/blob/master/docs/user/accessing-dashboard/README.md]
 
 - steps for generating the token
   - Create the dashboard service account
@@ -117,3 +129,8 @@ Kubectl will make Dashboard available at [http://localhost:8001/api/v1/namespace
     ```console
     kubectl describe secret dashboard-admin-sa-token-kw7vn
     ```
+
+- get all namespaces
+
+`kubectl get ingress --all-namespaces`
+`kubectl describe ingress dashboard-ingress -n kubernetes-dashboard`
