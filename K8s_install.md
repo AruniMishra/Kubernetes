@@ -7,7 +7,7 @@
     - [kubectl](#kubectl)
     - [namespace](#namespace)
     - [debugging](#debugging)
-    - [create mongo deployment](#create-mongo-deployment)
+    - [create mongo deployment](#create mongo db deployment(docker pull mongo))
     - [ingress](#ingress)
     - [Kubernetes dashboard](#kubernetes-dashboard)
 
@@ -19,6 +19,8 @@
 ## commmand
 
 ### create minikube cluster
+
+`minikube delete --all`
 
 `minikube start --driver=docker`
 
@@ -33,8 +35,6 @@
 `kubectl get services`
 
 ### kubectl
-
-`kubectl create deployment nginx-depl --image=nginx`
 
 `kubectl get deployment`
 
@@ -54,6 +54,8 @@
 
 `kubectl delete --all services`
 
+`kubectl delete daemonsets,replicasets,services,deployments,pods,rc,ingress --all --all-namespaces`
+
 ### namespace
 
 `kubectl create namespace my-namespace`
@@ -72,9 +74,13 @@
 
 `kubectl get all | grep mongodb`
 
-### create mongo deployment
+### create mongo db deployment(docker pull mongo)
 
 `kubectl create deployment mongo-depl --image=mongo`
+
+### create nginx deployment(docker pull nginx)
+
+`kubectl create deployment nginx-depl --image=nginx`
 
 ### ingress
 
@@ -87,7 +93,6 @@
 - The Dashboard UI is not deployed by default. To deploy it, run the following command:
 
 `kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.5.0/aio/deploy/recommended.yaml`
-
 
 Kubectl will make Dashboard available at [http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/]  
 `Kubectl proxy`
