@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: mongo-express
-        image: mongo-express
+        image: mongo-express:1.0-20-alpine3.17
         ports:
         - containerPort: 8081
         env:
@@ -52,3 +52,8 @@ spec:
       # if 'minikube' driver 'docker', run below
       # kubectl port-forward svc/mongo-express-service 30000:8081
       # and open via Browser 'http://127.0.0.1:30000/'
+
+      # Or,
+      # minikube service --all
+      # use the URL for  mongo-express-service
+      # cmd.exe /C start http://127.0.0.1:36567

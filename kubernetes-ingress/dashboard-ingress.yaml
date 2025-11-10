@@ -14,6 +14,6 @@ spec:
         pathType: Exact  
         backend:
           service:
-            name: kubernetes-dashboard
+            name: kubernetes-dashboard-api
             port: 
               number: 80

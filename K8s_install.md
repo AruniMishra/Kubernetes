@@ -60,6 +60,10 @@
 
 `kubectl create namespace my-namespace`
 
+`kubectl api-resources --namespaced=false`
+
+`kubectl api-resources --namespaced=true`
+
 ### debugging
 
 `kubectl logs {pod-name}`
@@ -78,6 +82,8 @@
 
 `kubectl create deployment mongo-depl --image=mongo`
 
+`kubectl get deployment nginx-deployment -o yaml > ngnix-deployment-result.yaml`
+
 ### create nginx deployment(docker pull nginx)
 
 `kubectl create deployment nginx-depl --image=nginx`
@@ -86,27 +92,53 @@
 
 `minikube addons enable ingress`
 
-`kubectl get pod -n kube-system`
+`kubectl get pods -n ingress-nginx`
 
 ### Kubernetes dashboard
 
-- The Dashboard UI is not deployed by default. To deploy it, run the following command:
+- OLD
 
-`kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.5.0/aio/deploy/recommended.yaml`
+  - The Dashboard UI is not deployed by default. To deploy it, run the following command:
 
-Kubectl will make Dashboard available at [http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/]  
-`Kubectl proxy`
+  `kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.5.0/aio/deploy/recommended.yaml`
 
-- kubectl port-forward  
-  Instead of kubectl proxy, you can use kubectl port-forward and access dashboard with simpler URL than using kubectl proxy
-  
-  To access Kubernetes Dashboard go to:
+  Kubectl will make Dashboard available at [http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/]  
+  `Kubectl proxy`
 
-  ```shell
-  https://localhost:8080
-  ```
+  - kubectl port-forward  
+    Instead of kubectl proxy, you can use kubectl port-forward and access dashboard with simpler URL than using kubectl proxy
+    
+    To access Kubernetes Dashboard go to:
 
-- Reference [https://github.com/kubernetes/dashboard/blob/master/docs/user/accessing-dashboard/README.md]
+    ```shell
+    https://localhost:8080
+    ```
+
+  - Reference [https://github.com/kubernetes/dashboard/blob/master/docs/user/accessing-dashboard/README.md]
+
+- NEW
+
+  - install [helm](https://helm.sh/docs/intro/install/)
+
+  - create a service account
+    - create dashboard-adminuser.yaml and use kubectl apply -f dashboard-adminuser.yaml to create them.
+
+    ```bash
+    # Add kubernetes-dashboard repository
+    helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/
+    
+    # Deploy a Helm Release named "kubernetes-dashboard" using the kubernetes-dashboard chart
+    helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --create-namespace --namespace kubernetes-dashboard
+    
+    ```
+
+  - kubectl -n NAMESPACE create token SERVICE_ACCOUNT
+    ```bash
+    kubectl -n kubernetes-dashboard create token admin-user
+
+    
+    kubectl -n kubernetes-dashboard port-forward svc/kubernetes-dashboard-kong-proxy 8443:443
+    ```
 
 - steps for generating the token
   - Create the dashboard service account
