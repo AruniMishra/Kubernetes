@@ -171,3 +171,4 @@
 
 `kubectl get ingress --all-namespaces`
 `kubectl describe ingress dashboard-ingress -n kubernetes-dashboard`
+
